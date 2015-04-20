@@ -19,11 +19,6 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String SESSION_USER_ID = "userId";
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter(SESSION_USER_ID);
 		String password = request.getParameter("password");
@@ -35,10 +30,10 @@ public class LoginServlet extends HttpServlet {
 			}
 			response.sendRedirect("/");
 		} catch (UserNotFoundException e){
-			PageController.Forward(request, response, "존재하지 않는 사용자!");
+			PageController.Forward(request, response, "존재하지 않는 사용자!", "login.jsp");
 			
 		} catch (PasswordMismatchException e){
-			PageController.Forward(request, response, "잘못된 비밀번호!");
+			PageController.Forward(request, response, "잘못된 비밀번호!", "login.jsp");
 		}
 	}
 

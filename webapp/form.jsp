@@ -33,8 +33,8 @@
 				<c:set var="actionUrl" value="/user/create" />
 				<c:set var="submitValue" value="회원가입" />
 				<c:if test="${not empty user.userId}">
-				<c:set var="actionUrl" value="/user/update" />
-				<c:set var="submitValue" value="정보수정" />
+					<c:set var="actionUrl" value="/user/update" />
+					<c:set var="submitValue" value="정보수정" />
 				</c:if>
 				
 				</div>
@@ -44,6 +44,9 @@
 							<td>사용자 아이디</td>
 							<c:choose>
 							<c:when test="${empty user.userId}">
+								<c:if test="${not empty errorMessage }">
+									<label class="error">"${errorMessage}"</label>
+								</c:if>
 								<td><input type="text" name="userId" value="${user.userId}"></td>
 							</c:when>
 							<c:otherwise>

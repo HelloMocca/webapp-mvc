@@ -30,7 +30,7 @@ public class UpdateUser extends HttpServlet {
 		try {
 			User user = userDAO.select(sessionUserId);
 			request.setAttribute("user", user);
-			RequestDispatcher rd = request.getRequestDispatcher("/update_form.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/form.jsp");
 			rd.forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -41,11 +41,7 @@ public class UpdateUser extends HttpServlet {
 		HttpSession session = request.getSession();
 		String SessionUserId = SessionUtils.getStringValue(session, LoginServlet.SESSION_USER_ID);
 		String userId = request.getParameter("userId");
-		if (SessionUserId == null) {
-			response.sendRedirect("/");
-			return;
-		}
-		if(!SessionUserId.equals(userId)){
+		if (SessionUserId == null || !SessionUserId.equals(userId)) {
 			response.sendRedirect("/");
 			return;
 		}

@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 public class PageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public static void Forward(HttpServletRequest request, HttpServletResponse response, String Msg) throws ServletException, IOException{
+	public static void Forward(HttpServletRequest request, HttpServletResponse response, String Msg, String url) throws ServletException, IOException{
 		request.setAttribute("errorMessage", Msg);
-		RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 }

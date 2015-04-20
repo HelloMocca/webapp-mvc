@@ -10,8 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class JdbcTemplate {
 	
-	private static final Logger logger = LoggerFactory
-			.getLogger(JdbcTemplate.class);
+	private static final Logger logger = LoggerFactory.getLogger(JdbcTemplate.class);
 	
 	public void executeUpdate(String sql, Object... parameteres) throws SQLException {
 		Connection conn = null;
